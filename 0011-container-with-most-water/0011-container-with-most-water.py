@@ -1,0 +1,21 @@
+class Solution:
+    def maxArea(self, height):
+        left = 0
+        right = len(height) - 1
+        max_area = 0
+        
+        while left < right:
+            # calculate area
+            h = min(height[left], height[right])
+            w = right - left
+            area = h * w
+            
+            max_area = max(max_area, area)
+            
+            # move pointer with smaller height
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+        
+        return max_area
